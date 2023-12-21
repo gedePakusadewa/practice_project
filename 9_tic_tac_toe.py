@@ -2,9 +2,9 @@
 # visualisation task https://www.youtube.com/watch?v=8ext9G7xspg&t=2153s
 
 # make two method to display what position player want and mwthod to calculate user input/move
-import math as mt
 
-displayLine = ""
+# --- first version
+
 filledPosition = {}
 winning_rule = {
 	"123",	"456",
@@ -184,33 +184,6 @@ def cpu_calculate(position):
 			return "Its tie"
 		else:
 			filledPosition.update({str(get_unfilled_position()) : "cpu"})
-
-def is_winning():
-
-	if len(filledPosition) == 0:
-		return False
-
-	cpu = ""
-	player = ""
-	for x in filledPosition:
-		if filledPosition[x] == "cpu":
-			cpu += x
-		elif filledPosition[x] == "player":
-			player += x
-
-	temp_cpu = "".join(sorted(cpu))
-	temp_player = "".join(sorted(player))
-
-	print(temp_cpu)
-	print(temp_player)
-
-
-	if temp_cpu in winning_rule:
-		return True
-	elif temp_player in winning_rule:
-		return True
-
-	return False
 
 def is_winning2():
 	if len(filledPosition) == 0:
