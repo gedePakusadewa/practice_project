@@ -5,35 +5,36 @@
 import math as mt
 
 displayLine = ""
-filledPosition = []
+filledPosition = {}
+winning_rule = {
+	"123",	"456",
+	"789",	"147",
+	"258",	"369",
+	"159",	"357"
+}
 
-def display(position, player):
-
-	if player != "start":
-		filledPosition.append(position)
-
+def display():
 	line = ""
-
 	dataPosition = {
-		"1":"2",
-		"2":"4",
-		"3":"6",
-		"4":"9",
-		"5":"11",
-		"6":"13",
-		"7":"16",
-		"8":"18",
-		"9":"20"
+		"2":"1",
+		"4":"2",
+		"6":"3",
+		"9":"4",
+		"11":"5",
+		"13":"6",
+		"16":"7",
+		"18":"8",
+		"20":"9"
 	}
-
 	i = 1
+
 	for x in range(1, 22, +1):
 
 		if i % 2 == 0:
 
-			if int(dataPosition[position]) == x and (player != "start"):
+			if dataPosition[str(x)] in filledPosition:
 
-				if player == "cpu":
+				if filledPosition[dataPosition[str(x)]] == "cpu":
 					line += "X"
 				else:
 					line += "O"
@@ -50,60 +51,223 @@ def display(position, player):
 
 	return line
 
-displayLine = display("8", "cpu")
-
 def get_unfilled_position():
 	for x in range(1, 10, +1):
-		if x not in filledPosition:
+		if str(x) not in filledPosition:
 			return x
 	return 0
 
 def cpu_calculate(position):
 
 	if position == 1:
-		if 2 not in filledPosition:
-			display(2, "cpu")
-		elif 5 not in filledPosition:
-			display(5, "cpu")
-		elif 4 not in filledPosition:
-			display(4, "cpu")
+		if str(2) not in filledPosition:
+			filledPosition.update({"2" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(4) not in filledPosition:
+			filledPosition.update({"4" : "cpu"})
 		elif get_unfilled_position() == 0:
-			print("Its tie")
+			return "Its tie"
 		else:
-			display(get_unfilled_position(), "cpu")
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 2:
+		if str(1) not in filledPosition:
+			filledPosition.update({"1" : "cpu"})
+		elif str(3) not in filledPosition:
+			filledPosition.update({"3" : "cpu"})
+		elif str(4) not in filledPosition:
+			filledPosition.update({"4" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(6) not in filledPosition:
+			filledPosition.update({"6" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 3:
+		if str(2) not in filledPosition:
+			filledPosition.update({"2" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(6) not in filledPosition:
+			filledPosition.update({"6" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 4:
+		if str(1) not in filledPosition:
+			filledPosition.update({"1" : "cpu"})
+		elif str(2) not in filledPosition:
+			filledPosition.update({"2" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(8) not in filledPosition:
+			filledPosition.update({"8" : "cpu"})
+		elif str(7) not in filledPosition:
+			filledPosition.update({"7" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 5:
+		if str(1) not in filledPosition:
+			filledPosition.update({"1" : "cpu"})
+		elif str(2) not in filledPosition:
+			filledPosition.update({"2" : "cpu"})
+		elif str(3) not in filledPosition:
+			filledPosition.update({"3" : "cpu"})
+		elif str(4) not in filledPosition:
+			filledPosition.update({"4" : "cpu"})
+		elif str(6) not in filledPosition:
+			filledPosition.update({"6" : "cpu"})
+		elif str(7) not in filledPosition:
+			filledPosition.update({"7" : "cpu"})
+		elif str(8) not in filledPosition:
+			filledPosition.update({"8" : "cpu"})
+		elif str(9) not in filledPosition:
+			filledPosition.update({"9" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 6:
+		if str(3) not in filledPosition:
+			filledPosition.update({"3" : "cpu"})
+		elif str(2) not in filledPosition:
+			filledPosition.update({"2" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(8) not in filledPosition:
+			filledPosition.update({"8" : "cpu"})
+		elif str(9) not in filledPosition:
+			filledPosition.update({"9" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 7:
+		if str(4) not in filledPosition:
+			filledPosition.update({"4" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(8) not in filledPosition:
+			filledPosition.update({"8" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 8:
+		if str(4) not in filledPosition:
+			filledPosition.update({"4" : "cpu"})
+		elif str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(6) not in filledPosition:
+			filledPosition.update({"6" : "cpu"})
+		elif str(7) not in filledPosition:
+			filledPosition.update({"7" : "cpu"})
+		elif str(9) not in filledPosition:
+			filledPosition.update({"9" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+	elif position == 9:
+		if str(5) not in filledPosition:
+			filledPosition.update({"5" : "cpu"})
+		elif str(6) not in filledPosition:
+			filledPosition.update({"6" : "cpu"})
+		elif str(8) not in filledPosition:
+			filledPosition.update({"8" : "cpu"})
+		elif get_unfilled_position() == 0:
+			return "Its tie"
+		else:
+			filledPosition.update({str(get_unfilled_position()) : "cpu"})
+
+def is_winning():
+
+	if len(filledPosition) == 0:
+		return False
+
+	cpu = ""
+	player = ""
+	for x in filledPosition:
+		if filledPosition[x] == "cpu":
+			cpu += x
+		elif filledPosition[x] == "player":
+			player += x
+
+	temp_cpu = "".join(sorted(cpu))
+	temp_player = "".join(sorted(player))
+
+	print(temp_cpu)
+	print(temp_player)
+
+
+	if temp_cpu in winning_rule:
+		return True
+	elif temp_player in winning_rule:
+		return True
+
+	return False
+
+def is_winning2():
+	if len(filledPosition) == 0:
+		return False
+
+	cpu = set()
+	player = set()
+	for x in filledPosition:
+		if filledPosition[x] == "cpu":
+			cpu.add(x)
+		elif filledPosition[x] == "player":
+			player.add(x)
+
+	for x in winning_rule:
+		temp = set(x)
+		temp_cpu = temp.intersection(cpu)
+		temp_player = temp.intersection(player)
+
+		if len(temp_cpu) == 3:
+			return True
+		elif len(temp_player) == 3:
+			return True
+
+	return False
+
+
 
 isStop = False
+print(display())
 while isStop == False:
-	display(1, "start")
 	ins = input("Your Move -> ")
 
-	if int(ins) == ins:
-		cpu_calculate(ins)
+	if int(ins):
+
+		if ins in filledPosition:
+			print("already exist")
+			print(display())
+			continue
+
+		filledPosition.update({ins : "player"})
+		print(display())
+
+		if is_winning2():
+			print("Player won")
+			break
+
+		cpu_calculate(int(ins))
+		print(display())
+
+		if is_winning2():
+			print("CPU won")
+			break
+
 	else:
 		isStop = True
 
-# rulesSet = {
-# 	"1" : {
-# 		"2" : "2",
-# 		"5" : "5",
-# 		"4" : "4"
-# 	}
-# }
 
-
-#|O|X|O|
-#|O|X|O|
-#|O|X|O|	
-# |-|-|-|
-# -|-|-|-
-# |-|-|-|
 #|1|2|3|
 #|4|5|6|
 #|7|8|9|	
-
-# jika 1 = 0 maka 
-# 	jika 2 kosong maka 2 X
-# 	jika 5 kosong maka 5 X
-# 	jika 4 kosong maka 4 X
-# 	jika tiga itu tidak ada yg kosong maka cari tempat lain yang kosong maka X
-# 	jika tidak ada tempat kosong maka "tie"
