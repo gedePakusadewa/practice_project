@@ -210,6 +210,9 @@ class TicTacToeGame():
 			else:
 				self.filled_position.update({self.get_unfilled_position() : self.player_1})
 
+	def smart_cpu(self):
+		
+
 	def run(self):
 		print(self.display_grid())
 
